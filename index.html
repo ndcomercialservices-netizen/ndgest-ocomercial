@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ND Gestão Comercial</title>
+  <meta name="description" content="ND COMERCIAL — Gestão comercial estratégica, metodologias comprovadas e suporte dedicado para empresas que desejam estruturar, profissionalizar e acelerar seus resultados."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #F47B20;
+      --orange2: #C95F00;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark2: #181818;
+      --dark3: #222222;
+      --white: #FFFFFF;
+      --gray: #999999;
+      --gray2: #cccccc;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 6vw;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(244,123,32,0.12);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: var(--orange); display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.9rem; color: #fff; letter-spacing: 0;
+    }
+    .nav-brand-text { font-weight: 800; font-size: 0.95rem; color: var(--white); letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--orange); color: #fff;
+      padding: 10px 22px; border-radius: 6px;
+      font-weight: 700; font-size: 0.8rem;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--orange2); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; display: block; transition: .3s; }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      position: fixed; top: 70px; left: 0; right: 0;
+      background: #111; padding: 24px 6vw; gap: 20px;
+      z-index: 99; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--gray2); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .mobile-menu .nav-cta { text-align: center; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 88vh; display: flex; align-items: center;
+      padding: 80px 6vw 70px; position: relative; overflow: hidden;
+    }
+    .hero-bg-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 60% 30%, rgba(244,123,32,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(244,123,32,0.06) 0%, transparent 50%);
+    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(244,123,32,0.1); border: 1px solid rgba(244,123,32,0.3);
+      color: var(--orange); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 24px;
+    }
+    .hero-tag span { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: block; }
+    h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.12; margin-bottom: 22px; }
+    h1 em { font-style: normal; color: var(--orange); }
+    .hero-sub { font-size: 1rem; color: var(--gray2); line-height: 1.75; margin-bottom: 36px; max-width: 500px; }
+    .hero-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--orange); color: #fff;
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: background .2s, transform .2s;
+    }
+    .hero-btn:hover { background: var(--orange2); transform: translateY(-2px); }
+    .hero-card {
+      background: var(--dark2); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 36px 28px; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-avatar {
+      width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 18px;
+      background: linear-gradient(135deg, var(--orange), var(--orange2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.4rem; color: #fff; overflow: hidden;
+    }
+    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+    .hero-card .role { color: var(--orange); font-size: 0.8rem; font-weight: 600; margin-bottom: 24px; }
+    .cert { display: flex; align-items: flex-start; gap: 12px; text-align: left; margin-bottom: 14px; }
+    .cert-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(244,123,32,0.15); border: 1px solid var(--orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .cert-check i { color: var(--orange); font-size: 0.65rem; }
+    .cert strong { display: block; font-size: 0.82rem; margin-bottom: 2px; }
+    .cert span { color: var(--gray); font-size: 0.73rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 6vw; }
+    .sec-dark { background: var(--dark); }
+    .sec-black { background: var(--black); }
+    .sec-dark2 { background: var(--dark2); }
+    .inner { max-width: 1100px; margin: 0 auto; }
+    .slabel {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--orange); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .slabel::before { content: ''; width: 20px; height: 2px; background: var(--orange); }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    h2 em { font-style: normal; color: var(--orange); }
+    .sdesc { color: var(--gray2); font-size: 0.92rem; line-height: 1.75; max-width: 560px; margin-bottom: 48px; }
+
+    /* ── SERVIÇOS ── */
+    .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .srv {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 28px 24px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .srv::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange2)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .srv:hover { transform: translateY(-5px); border-color: rgba(244,123,32,0.25); box-shadow: 0 16px 40px rgba(244,123,32,0.08); }
+    .srv:hover::after { transform: scaleX(1); }
+    .srv-num { font-size: 2rem; font-weight: 900; color: rgba(244,123,32,0.2); margin-bottom: 14px; line-height: 1; }
+    .srv h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
+    .srv p { color: var(--gray); font-size: 0.8rem; line-height: 1.65; }
+
+    /* ── DIFERENCIAIS ── */
+    .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .diff {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 28px 22px; text-align: center;
+    }
+    .diff-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .diff h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .diff p { color: var(--gray); font-size: 0.8rem; line-height: 1.65; }
+
+    /* ── PARCEIROS ── */
+    .partners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    .partner {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 28px 20px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
+      transition: border-color .25s, transform .25s;
+    }
+    .partner:hover { border-color: rgba(244,123,32,0.3); transform: translateY(-4px); }
+    .partner-logo {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: #fff; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(244,123,32,0.15);
+    }
+    .partner-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+    .partner-logo i { color: var(--orange); font-size: 1.8rem; }
+    .partner h4 { font-size: 0.88rem; font-weight: 700; }
+    .partner p { color: var(--gray); font-size: 0.73rem; }
+
+    /* ── CONTATO ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .form { display: flex; flex-direction: column; gap: 14px; }
+    .form label { font-size: 0.78rem; font-weight: 600; color: var(--gray2); margin-bottom: 4px; display: block; }
+    .form label span { color: var(--orange); }
+    .form input, .form textarea, .form select {
+      width: 100%; background: var(--dark3); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 12px 16px; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem;
+      outline: none; transition: border-color .2s;
+    }
+    .form input:focus, .form textarea:focus { border-color: var(--orange); }
+    .form textarea { resize: vertical; min-height: 120px; }
+    .form button {
+      background: var(--orange); color: #fff; border: none;
+      padding: 14px 28px; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 0.88rem; cursor: pointer;
+      transition: background .2s, transform .2s; width: 100%;
+    }
+    .form button:hover { background: var(--orange2); transform: translateY(-2px); }
+    .form-note { color: var(--gray); font-size: 0.72rem; text-align: center; margin-top: 4px; }
+    .contact-channels { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .channel {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 16px 18px; text-decoration: none;
+      transition: border-color .2s, transform .2s;
+    }
+    .channel:hover { border-color: rgba(244,123,32,0.3); transform: translateX(4px); }
+    .channel-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(244,123,32,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .channel-icon i { color: var(--orange); font-size: 1.1rem; }
+    .channel strong { display: block; color: var(--white); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .channel span { color: var(--gray2); font-size: 0.85rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060606; border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 6vw; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .foot-brand { display: flex; align-items: center; gap: 10px; }
+    .foot-brand-icon { width: 34px; height: 34px; border-radius: 6px; background: var(--orange); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; color: #fff; }
+    .foot-brand-text { font-weight: 700; font-size: 0.85rem; color: var(--white); }
+    footer p { color: var(--gray); font-size: 0.72rem; }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 520px) {
+      section { padding: 60px 5vw; }
+      nav { padding: 14px 5vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">ND</div>
+    <span class="nav-brand-text">ND COMERCIAL</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Começar Agora</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="#contato" onclick="closeMenu()">Contato</a>
+  <a href="#contato" class="nav-cta" onclick="closeMenu()">Começar Agora</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag"><span></span> Gestão Comercial Estratégica</div>
+      <h1>Transforme sua operação comercial em uma <em>máquina de vendas</em></h1>
+      <p class="hero-sub">Gestão comercial estratégica, metodologias comprovadas e suporte dedicado para empresas que desejam estruturar, profissionalizar e acelerar seus resultados.</p>
+      <a href="#contato" class="hero-btn">Começar Agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="hero-card">
+      <div class="hero-avatar">
+        <img src="foto-gestora.jpeg" alt="Natália Marques"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='NM'"/>
+      </div>
+      <h3>Natália Marques</h3>
+      <p class="role">Especialista em Gestão Comercial</p>
+      <div class="cert">
+        <div class="cert-check"><i class="fas fa-check"></i></div>
+        <div><strong>Clouser de Vendas</strong><span>Certificada pela Growth Machine</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-check"><i class="fas fa-check"></i></div>
+        <div><strong>Sales Development</strong><span>Técnicas e fundamentos avançados</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-check"><i class="fas fa-check"></i></div>
+        <div><strong>Metodologias Comprovadas</strong><span>BANT, SPIN Selling e mais</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="sec-dark">
+  <div class="inner">
+    <div class="slabel">Sobre</div>
+    <h2>Conheça <em>Natália Marques</em></h2>
+    <p class="sdesc">Especialista em vendas B2B e B2C com experiência comprovada em estruturação de processos comerciais e aceleração de resultados.</p>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="sec-black">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:48px">
+      <div class="slabel" style="justify-content:center">Serviços</div>
+      <h2>O que <em>entregamos</em></h2>
+    </div>
+    <div class="srv-grid">
+      <div class="srv">
+        <div class="srv-num">01</div>
+        <h3>Diagnóstico Comercial</h3>
+        <p>Análise profunda do cenário atual, gargalos, oportunidades e prioridades de ação para sua operação.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-num">02</div>
+        <h3>Planejamento Estratégico</h3>
+        <p>Definição de metas, estratégias comerciais, indicadores e direcionamento de crescimento alinhado ao seu negócio.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-num">03</div>
+        <h3>Implantação de Processos</h3>
+        <p>Estruturação de funil de vendas, rotina comercial, padronização e acompanhamento de indicadores em tempo real.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-num">04</div>
+        <h3>Treinamento e Suporte</h3>
+        <p>Capacitação em metodologias modernas (BANT, SPIN Selling) e acompanhamento contínuo da equipe comercial.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-num">05</div>
+        <h3>Aumento em Vendas</h3>
+        <p>Implementação de técnicas e processos focados em elevar conversão, volume de negócios e receita.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-num">06</div>
+        <h3>Suporte Dedicado</h3>
+        <p>Acompanhamento próximo e personalizado para tirar dúvidas e ajustar estratégia em tempo real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="sec-dark">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:48px">
+      <div class="slabel" style="justify-content:center">Diferenciais</div>
+      <h2>Por que escolher a <em>ND COMERCIAL</em></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff">
+        <span class="diff-icon">🎯</span>
+        <h3>Atendimento Consultivo</h3>
+        <p>Soluções adaptadas à realidade e maturidade comercial do seu negócio.</p>
+      </div>
+      <div class="diff">
+        <span class="diff-icon">🤝</span>
+        <h3>Acompanhamento Próximo</h3>
+        <p>Presença na execução para apoiar líderes e garantir evolução contínua.</p>
+      </div>
+      <div class="diff">
+        <span class="diff-icon">📈</span>
+        <h3>Foco em Resultado</h3>
+        <p>Indicadores, metas e receita como base para decisões comerciais claras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCEIROS -->
+<section class="sec-black">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:16px">
+      <div class="slabel" style="justify-content:center">Parceiros</div>
+      <h2>Nossos <em>Parceiros</em></h2>
+      <p style="color:var(--gray);font-size:0.88rem;text-align:center;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto">
+        Trabalhamos com instituições de excelência que compartilham nosso compromisso com qualidade e resultados.
+      </p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner">
+        <div class="partner-logo">
+          <img src="logo-domina.webp" alt="Domina Academy"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-graduation-cap\'></i>'"/>
+        </div>
+        <h4>Domina Academy</h4>
+        <p>Instituto Deize Neves</p>
+      </div>
+      <div class="partner">
+        <div class="partner-logo">
+          <img src="logo-real.jpg" alt="Real Serviços"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"/>
+        </div>
+        <h4>Real Serviços</h4>
+        <p>Soluções Ambientais</p>
+      </div>
+      <div class="partner">
+        <div class="partner-logo">
+          <img src="logo-jessyka.avif" alt="Jessyka Laís"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-birthday-cake\'></i>'"/>
+        </div>
+        <h4>Jessyka Laís</h4>
+        <p>Confeitaria Afetiva</p>
+      </div>
+      <div class="partner">
+        <div class="partner-logo">
+          <img src="logo-baianinha.jpg" alt="Baianinha Acarajé"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-utensils\'></i>'"/>
+        </div>
+        <h4>Baianinha Acarajé</h4>
+        <p>Alimentos</p>
+      </div>
+      <!-- ADICIONE NOVOS PARCEIROS AQUI -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="sec-dark">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:48px">
+      <div class="slabel" style="justify-content:center">Contato</div>
+      <h2>Vamos transformar vendas em <em>resultados</em></h2>
+      <p style="color:var(--gray);font-size:0.88rem;max-width:500px;margin:0 auto">
+        Entre em contato com a ND COMERCIAL e descubra como podemos estruturar e acelerar sua operação comercial.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:24px">Envie uma mensagem</h3>
+        <div class="form">
+          <div>
+            <label>Nome completo <span>*</span></label>
+            <input type="text" id="f-name" placeholder="Seu nome completo"/>
+          </div>
+          <div>
+            <label>Email <span>*</span></label>
+            <input type="email" id="f-email" placeholder="seu@email.com"/>
+          </div>
+          <div>
+            <label>Telefone/WhatsApp <span>*</span></label>
+            <input type="tel" id="f-phone" placeholder="(81) 9 9999-9999"/>
+          </div>
+          <div>
+            <label>Empresa</label>
+            <input type="text" id="f-company" placeholder="Nome da sua empresa"/>
+          </div>
+          <div>
+            <label>Mensagem <span>*</span></label>
+            <textarea id="f-msg" placeholder="Conte sobre seu negócio e o que você precisa..."></textarea>
+          </div>
+          <button onclick="sendWhatsapp()">Enviar Mensagem</button>
+          <p class="form-note">* Campos obrigatórios. Respeitamos sua privacidade.</p>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:24px">Ou entre em contato direto</h3>
+        <div class="contact-channels">
+          <a href="https://wa.me/5581995555778" target="_blank" class="channel">
+            <div class="channel-icon"><i class="fab fa-whatsapp"></i></div>
+            <div><strong>WhatsApp</strong><span>(81) 99555-5778</span></div>
+          </a>
+          <a href="https://instagram.com/ndgestaocomercial" target="_blank" class="channel">
+            <div class="channel-icon"><i class="fab fa-instagram"></i></div>
+            <div><strong>Instagram</strong><span>@ndgestaocomercial</span></div>
+          </a>
+          <a href="mailto:ndcomercialservices@gmail.com" class="channel">
+            <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+            <div><strong>Email</strong><span>ndcomercialservices@gmail.com</span></div>
+          </a>
+          <a href="tel:+5581995555778" class="channel">
+            <div class="channel-icon"><i class="fas fa-phone"></i></div>
+            <div><strong>Telefone</strong><span>(81) 99555-5778</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">
+    <div class="foot-brand-icon">ND</div>
+    <span class="foot-brand-text">ND COMERCIAL</span>
+  </div>
+  <p>© 2026 ND COMERCIAL. Gestão Comercial | Todos os direitos reservados.</p>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5581995555778" class="wa-float" target="_blank" title="Fale pelo WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  function sendWhatsapp() {
+    const name = document.getElementById('f-name').value || '...';
+    const co = document.getElementById('f-company').value || '';
+    const msg = document.getElementById('f-msg').value || '';
+    let text = 'Olá! Me chamo ' + name;
+    if (co) text += ', da empresa ' + co;
+    text += '.\n' + msg;
+    window.open('https://wa.me/5581995555778?text=' + encodeURIComponent(text), '_blank');
+  }
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+</script>
+</body>
+</html>
